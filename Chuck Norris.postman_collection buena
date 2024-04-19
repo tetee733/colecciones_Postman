@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "d9746980-661c-4cb2-8017-f3cba7e72fe9",
+		"name": "Chuck Norris",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34050353"
+	},
+	"item": [
+		{
+			"name": "Random Joke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/random",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Random Joke from Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/random?category={{category}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"random"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "{{category}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of Categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('check the response = 16', function () {\r",
+							"    var jsonObject = pm.response.json();\r",
+							"    pm.expect(jsonObject).to.have.lengthOf(16);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/categories",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Free text search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "jokes/search?query={query}",
+					"host": [
+						"jokes"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{query}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
